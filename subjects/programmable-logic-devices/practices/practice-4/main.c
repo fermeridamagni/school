@@ -3,8 +3,8 @@
  * @author ferme
  * @date 2025-09-24
  * @brief Main function
- * @details Get the analogic value from the ADC in the PIC16F887 and control
- * PORTB LEDs based on the ADC value.
+ * @details Get the analogic value from the bit AN0 in the PIC16F887 and control
+ * PORTB LEDs based on the value.
  */
 
 #include <pic16f887.h> // Include the specific header for PIC16F887
@@ -28,16 +28,30 @@
 #pragma config BOR4V = BOR40V        // Brown-out Reset 4.0V
 #pragma config WRT = OFF // Flash Program Memory Write Enable bits off
 
+// Function to read ADC value
+unsigned int ADC_Read(void) {
+  __delay_us(20);          // Acquisition time delay
+  ADCON0bits.GO_nDONE = 1; // Start conversion
+  while (ADCON0bits.GO_nDONE)
+    ;                              // Wait for conversion to complete
+  return ((ADRESH << 8) + ADRESL); // Return 10-bit result
+}
+
 void main() {
   // Configure analog input pin
+  ANSELbits.ANS0 = 1;   // Set RA0 (AN0) as analog
   TRISAbits.TRISA0 = 1; // Set RA0 (AN0) as input
-  ANSEL = 0x01;         // Enable analog input on AN0 (bit 0), others digital
 
-  // Initialize the ADC
-  ADCON0 = 0x41; // Enable ADC (ADON=1), select channel AN0 (CHS2:0=000)
-  ADCON1 = 0x80; // Right justified, VDD/VSS references
+  // Configure ADC module
+  ADCON0bits.ADCS = 0b10;  // ADC clock = FOSC/32 (for 8MHz)
+  ADCON0bits.CHS = 0b0000; // Select channel AN0
+  ADCON0bits.ADON = 1;     // Turn on ADC module
 
-  // Output pins
+  ADCON1bits.ADFM = 1;  // Right justify result (10-bit)
+  ADCON1bits.VCFG0 = 0; // Use VDD as positive reference
+  ADCON1bits.VCFG1 = 0; // Use VSS as negative reference
+
+  // Output digital pins
   TRISBbits.TRISB0 = 0; // Set RB0 as output
   TRISBbits.TRISB1 = 0; // Set RB1 as output
   TRISBbits.TRISB2 = 0; // Set RB2 as output
@@ -47,90 +61,56 @@ void main() {
   TRISBbits.TRISB6 = 0; // Set RB6 as output
   TRISBbits.TRISB7 = 0; // Set RB7 as output
 
+  // Main loop
   while (1) {
-    // Allow acquisition time
-    __delay_us(20); // Acquisition time delay (minimum 19.72us for 10-bit)
+    unsigned int adc_value = ADC_Read(); // Read ADC value once per loop
 
-    // Start ADC conversion
-    GO_nDONE = 1; // Start conversion (alternative: ADCON0bits.GO_DONE = 1)
-    while (GO_nDONE)
-      ; // Wait for conversion to complete
-
-    // Read 10-bit ADC result (0-1023) - right justified
-    int adc_value = (ADRESH << 8) | ADRESL;
-
-    if (adc_value <= 128) {
+    if (adc_value >= 128) {
       PORTBbits.RB0 = 1; // Set RB0 high
-      PORTBbits.RB1 = 0; // Set RB1 low
-      PORTBbits.RB2 = 0; // Set RB2 low
-      PORTBbits.RB3 = 0; // Set RB3 low
-      PORTBbits.RB4 = 0; // Set RB4 low
-      PORTBbits.RB5 = 0; // Set RB5 low
-      PORTBbits.RB6 = 0; // Set RB6 low
-      PORTBbits.RB7 = 0; // Set RB7 low
-    } else if (adc_value <= 256) {
-      PORTBbits.RB0 = 1; // Set RB0 high
-      PORTBbits.RB1 = 1; // Set RB1 high
-      PORTBbits.RB2 = 0; // Set RB2 low
-      PORTBbits.RB3 = 0; // Set RB3 low
-      PORTBbits.RB4 = 0; // Set RB4 low
-      PORTBbits.RB5 = 0; // Set RB5 low
-      PORTBbits.RB6 = 0; // Set RB6 low
-      PORTBbits.RB7 = 0; // Set RB7 low
-    } else if (adc_value <= 384) {
-      PORTBbits.RB0 = 1; // Set RB0 high
-      PORTBbits.RB1 = 1; // Set RB1 high
-      PORTBbits.RB2 = 1; // Set RB2 high
-      PORTBbits.RB3 = 0; // Set RB3 low
-      PORTBbits.RB4 = 0; // Set RB4 low
-      PORTBbits.RB5 = 0; // Set RB5 low
-      PORTBbits.RB6 = 0; // Set RB6 low
-      PORTBbits.RB7 = 0; // Set RB7 low
-    } else if (adc_value <= 512) {
-      PORTBbits.RB0 = 1; // Set RB0 high
-      PORTBbits.RB1 = 1; // Set RB1 high
-      PORTBbits.RB2 = 1; // Set RB2 high
-      PORTBbits.RB3 = 1; // Set RB3 high
-      PORTBbits.RB4 = 0; // Set RB4 low
-      PORTBbits.RB5 = 0; // Set RB5 low
-      PORTBbits.RB6 = 0; // Set RB6 low
-      PORTBbits.RB7 = 0; // Set RB7 low
-    } else if (adc_value <= 640) {
-      PORTBbits.RB0 = 1; // Set RB0 high
-      PORTBbits.RB1 = 1; // Set RB1 high
-      PORTBbits.RB2 = 1; // Set RB2 high
-      PORTBbits.RB3 = 1; // Set RB3 high
-      PORTBbits.RB4 = 1; // Set RB4 high
-      PORTBbits.RB5 = 0; // Set RB5 low
-      PORTBbits.RB6 = 0; // Set RB6 low
-      PORTBbits.RB7 = 0; // Set RB7 low
-    } else if (adc_value <= 768) {
-      PORTBbits.RB0 = 1; // Set RB0 high
-      PORTBbits.RB1 = 1; // Set RB1 high
-      PORTBbits.RB2 = 1; // Set RB2 high
-      PORTBbits.RB3 = 1; // Set RB3 high
-      PORTBbits.RB4 = 1; // Set RB4 high
-      PORTBbits.RB5 = 1; // Set RB5 high
-      PORTBbits.RB6 = 0; // Set RB6 low
-      PORTBbits.RB7 = 0; // Set RB7 low
-    } else if (adc_value <= 896) {
-      PORTBbits.RB0 = 1; // Set RB0 high
-      PORTBbits.RB1 = 1; // Set RB1 high
-      PORTBbits.RB2 = 1; // Set RB2 high
-      PORTBbits.RB3 = 1; // Set RB3 high
-      PORTBbits.RB4 = 1; // Set RB4 high
-      PORTBbits.RB5 = 1; // Set RB5 high
-      PORTBbits.RB6 = 1; // Set RB6 high
-      PORTBbits.RB7 = 0; // Set RB7 low
     } else {
-      PORTBbits.RB0 = 1; // Set RB0 high
+      PORTBbits.RB0 = 0; // Set RB0 low
+    }
+
+    if (adc_value >= 256) {
       PORTBbits.RB1 = 1; // Set RB1 high
+    } else {
+      PORTBbits.RB1 = 0; // Set RB1 low
+    }
+
+    if (adc_value >= 384) {
       PORTBbits.RB2 = 1; // Set RB2 high
+    } else {
+      PORTBbits.RB2 = 0; // Set RB2 low
+    }
+
+    if (adc_value >= 512) {
       PORTBbits.RB3 = 1; // Set RB3 high
+    } else {
+      PORTBbits.RB3 = 0; // Set RB3 low
+    }
+
+    if (adc_value <= 640) {
       PORTBbits.RB4 = 1; // Set RB4 high
+    } else {
+      PORTBbits.RB4 = 0; // Set RB4 low
+    }
+
+    if (adc_value <= 768) {
       PORTBbits.RB5 = 1; // Set RB5 high
+    } else {
+      PORTBbits.RB5 = 0; // Set RB5 low
+    }
+
+    if (adc_value <= 896) {
       PORTBbits.RB6 = 1; // Set RB6 high
+    } else {
+      PORTBbits.RB6 = 0; // Set RB6 low
+    }
+
+    if (adc_value <= 1023) {
       PORTBbits.RB7 = 1; // Set RB7 high
+    } else {
+      PORTBbits.RB7 = 0; // Set RB7 low
     }
 
     // Small delay to prevent excessive ADC reading rate
