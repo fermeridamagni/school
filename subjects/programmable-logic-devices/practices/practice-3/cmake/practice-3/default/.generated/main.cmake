@@ -25,20 +25,17 @@ add_library(practice_3_default_default_XC8_compile OBJECT ${practice_3_default_d
     list(APPEND practice_3_default_library_list "$<TARGET_OBJECTS:practice_3_default_default_XC8_compile>")
 endif()
 
+add_executable(practice_3_default_image_FSukeJe_ ${practice_3_default_library_list})
 
-add_executable(practice_3_default_image_iW14QFAG ${practice_3_default_library_list})
+set_target_properties(practice_3_default_image_FSukeJe_ PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${practice_3_default_output_dir})
+set_target_properties(practice_3_default_image_FSukeJe_ PROPERTIES OUTPUT_NAME "default")
+set_target_properties(practice_3_default_image_FSukeJe_ PROPERTIES SUFFIX ".elf")
 
-set_target_properties(practice_3_default_image_iW14QFAG PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${practice_3_default_output_dir})
-set_target_properties(practice_3_default_image_iW14QFAG PROPERTIES OUTPUT_NAME "default")
-set_target_properties(practice_3_default_image_iW14QFAG PROPERTIES SUFFIX ".elf")
-         
-
-target_link_libraries(practice_3_default_image_iW14QFAG PRIVATE ${practice_3_default_default_XC8_FILE_TYPE_link})
+target_link_libraries(practice_3_default_image_FSukeJe_ PRIVATE ${practice_3_default_default_XC8_FILE_TYPE_link})
 
 
 # Add the link options from the rule file.
-practice_3_default_link_rule(practice_3_default_image_iW14QFAG)
-
+practice_3_default_link_rule(practice_3_default_image_FSukeJe_)
 
 
 

@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @author ferme
+ * @author fermeridamagni
  * @date 2025-09-20
  * @brief Main function for PIC16F887 microcontroller.
  */

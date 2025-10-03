@@ -15,15 +15,14 @@ foreach(source_file ${practice_3_default_default_XC8_FILE_TYPE_assemblePreproces
         set_source_files_properties(${source_file} PROPERTIES INCLUDE_DIRECTORIES "$<PATH:NORMAL_PATH,$<PATH:REMOVE_FILENAME,${source_file}>>")
 endforeach()
 
-set(practice_3_default_default_XC8_FILE_TYPE_compile
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../subjects/programmable-logic-devices/practices/practice-3/_build/practice-3/default.production/CMakeFiles/4.1.1/CompilerIdC/CMakeCCompilerId.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../subjects/programmable-logic-devices/practices/practice-3/_build/practice-3/default/CMakeFiles/4.1.1/CompilerIdC/CMakeCCompilerId.c"
-    "${CMAKE_CURRENT_SOURCE_DIR}/../../../subjects/programmable-logic-devices/practices/practice-3/main.c")
+set(practice_3_default_default_XC8_FILE_TYPE_compile "${CMAKE_CURRENT_SOURCE_DIR}/../../../main.c")
 set_source_files_properties(${practice_3_default_default_XC8_FILE_TYPE_compile} PROPERTIES LANGUAGE C)
 set(practice_3_default_default_XC8_FILE_TYPE_link)
 set(practice_3_default_image_name "default.elf")
 set(practice_3_default_image_base_name "default")
 
-
 # The output directory of the final image.
 set(practice_3_default_output_dir "${CMAKE_CURRENT_SOURCE_DIR}/../../../out/practice-3")
+
+# The full path to the final image.
+set(practice_3_default_full_path_to_image ${practice_3_default_output_dir}/${practice_3_default_image_name})
