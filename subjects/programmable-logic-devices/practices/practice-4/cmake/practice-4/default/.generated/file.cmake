@@ -21,6 +21,8 @@ set(practice_4_default_default_XC8_FILE_TYPE_link)
 set(practice_4_default_image_name "default.elf")
 set(practice_4_default_image_base_name "default")
 
-
 # The output directory of the final image.
 set(practice_4_default_output_dir "${CMAKE_CURRENT_SOURCE_DIR}/../../../out/practice-4")
+
+# The full path to the final image.
+set(practice_4_default_full_path_to_image ${practice_4_default_output_dir}/${practice_4_default_image_name})

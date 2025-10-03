@@ -25,20 +25,17 @@ add_library(practice_4_default_default_XC8_compile OBJECT ${practice_4_default_d
     list(APPEND practice_4_default_library_list "$<TARGET_OBJECTS:practice_4_default_default_XC8_compile>")
 endif()
 
+add_executable(practice_4_default_image_5qocmb9T ${practice_4_default_library_list})
 
-add_executable(practice_4_default_image_KYPDJezv ${practice_4_default_library_list})
+set_target_properties(practice_4_default_image_5qocmb9T PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${practice_4_default_output_dir})
+set_target_properties(practice_4_default_image_5qocmb9T PROPERTIES OUTPUT_NAME "default")
+set_target_properties(practice_4_default_image_5qocmb9T PROPERTIES SUFFIX ".elf")
 
-set_target_properties(practice_4_default_image_KYPDJezv PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${practice_4_default_output_dir})
-set_target_properties(practice_4_default_image_KYPDJezv PROPERTIES OUTPUT_NAME "default")
-set_target_properties(practice_4_default_image_KYPDJezv PROPERTIES SUFFIX ".elf")
-         
-
-target_link_libraries(practice_4_default_image_KYPDJezv PRIVATE ${practice_4_default_default_XC8_FILE_TYPE_link})
+target_link_libraries(practice_4_default_image_5qocmb9T PRIVATE ${practice_4_default_default_XC8_FILE_TYPE_link})
 
 
 # Add the link options from the rule file.
-practice_4_default_link_rule(practice_4_default_image_KYPDJezv)
-
+practice_4_default_link_rule(practice_4_default_image_5qocmb9T)
 
 
 
