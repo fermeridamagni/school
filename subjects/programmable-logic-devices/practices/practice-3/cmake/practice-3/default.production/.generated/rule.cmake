@@ -2,7 +2,7 @@
 
 set(PACK_REPO_PATH "C:/Users/ferme/.mchp_packs" CACHE PATH "Path to the root of a pack repository.")
 
-function(practice-3_default_default_XC8_assemble_rule target)
+function(practice_3_default_default_XC8_assemble_rule target)
     set(options
         "-c"
         "${MP_EXTRA_AS_PRE}"
@@ -34,7 +34,7 @@ function(practice-3_default_default_XC8_assemble_rule target)
         PRIVATE "__MPLAB_DEBUGGER_SIMULATOR=1"
         PRIVATE "XPRJ_default=default")
 endfunction()
-function(practice-3_default_default_XC8_assemblePreprocess_rule target)
+function(practice_3_default_default_XC8_assemblePreprocess_rule target)
     set(options
         "-c"
         "${MP_EXTRA_AS_PRE}"
@@ -68,7 +68,7 @@ function(practice-3_default_default_XC8_assemblePreprocess_rule target)
         PRIVATE "__MPLAB_DEBUGGER_SIMULATOR=1"
         PRIVATE "XPRJ_default=default")
 endfunction()
-function(practice-3_default_default_XC8_compile_rule target)
+function(practice_3_default_default_XC8_compile_rule target)
     set(options
         "-c"
         "${MP_EXTRA_CC_PRE}"
@@ -100,7 +100,7 @@ function(practice-3_default_default_XC8_compile_rule target)
         PRIVATE "__MPLAB_DEBUGGER_SIMULATOR=1"
         PRIVATE "XPRJ_default=default")
 endfunction()
-function(practice-3_default_link_rule target)
+function(practice_3_default_link_rule target)
     set(options
         "-Wl,-Map=mem.map"
         "${MP_EXTRA_LD_PRE}"
