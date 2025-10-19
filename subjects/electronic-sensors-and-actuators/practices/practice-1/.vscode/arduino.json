@@ -1,0 +1,8 @@
+{
+    "sketch": "practice-1.ino",
+    "port": "COM9",
+    "output": "../build",
+    "prebuild": "./prebuild.sh",
+    "postbuild": "./postbuild.sh",
+    "board": "arduino:avr:uno:r4"
+}
