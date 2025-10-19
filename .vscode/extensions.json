@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "microchip.mplab-clangd",
+        "vscode-arduino.vscode-arduino-community"
+    ]
+}
