@@ -51,7 +51,7 @@ void loop() {
       digitalWrite(firstTrafficLight[1], HIGH);  // turn on yellow light
       digitalWrite(firstTrafficLight[2], LOW);   // turn off green light
 
-      digitalWrite(secondTrafficLight[0], HIGH);  // turn off red light
+      digitalWrite(secondTrafficLight[0], HIGH);  // turn on red light
       digitalWrite(secondTrafficLight[1], LOW);  // turn off yellow light
       digitalWrite(secondTrafficLight[2], LOW);  // turn off green light
 
