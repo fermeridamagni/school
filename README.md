@@ -4,7 +4,7 @@ A collection of educational materials and resources for various subjects and cou
 
 ## Repository Structure
 
-```
+```txt
 school/
 ├── subjects/
 │   ├── programmable-logic-devices/
@@ -22,11 +22,13 @@ school/
 ## Subjects
 
 ### Programmable Logic Devices
+
 Materials for embedded systems and PIC microcontroller programming using MPLAB X IDE and XC8 compiler.
 
 [View subject details →](subjects/programmable-logic-devices/README.md)
 
 ### Design of Mechanisms Assisted by Computer
+
 Computer-aided design projects focusing on mechanical mechanisms, kinematics, and engineering analysis.
 
 [View subject details →](subjects/design-of-mechanisms-assisted-by-computer/README.md)
@@ -41,6 +43,7 @@ Computer-aided design projects focusing on mechanical mechanisms, kinematics, an
 ## Documentation Standards
 
 Each practice directory includes:
+
 - **README.md**: Structure and purpose documentation
 - **Source files**: Code or design files for the practice
 - **Build configuration**: Project files and build scripts
