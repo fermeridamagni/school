@@ -1,3 +1,10 @@
+/**
+ * @file main.ino
+ * @author fermeridamagni
+ * @date 2025-10-22
+ * @description Simple LED sequence controller with buzzer. Cycles through blue, green, and yellow LEDs with 1-second delays, and generates a 1KHz tone on the buzzer.
+ */
+
 const int blueLed = 8;
 const int greenLed = 7;
 const int yellowLed = 4;

@@ -1,3 +1,10 @@
+/**
+ * @file practice-9.ino
+ * @author fermeridamagni
+ * @date 2025-10-22
+ * @description Traffic light controller simulation. Controls two sets of traffic lights (red, yellow, green) with synchronized state transitions.
+ */
+
 #include <Arduino.h>
 
 const int led1 = 2;

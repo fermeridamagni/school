@@ -2,7 +2,7 @@
  * @file main.c
  * @author fermeridamagni
  * @date 2025-09-20
- * @brief Main function for PIC16F887 microcontroller.
+ * @description Main function for PIC16F887 microcontroller. Reads digital inputs from pins RC1, RD2, and RD7, and controls corresponding outputs on RD0, RA2, and RB3 respectively.
  */
 
 #include <pic16f887.h>
