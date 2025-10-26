@@ -1,0 +1,21 @@
+{
+  "name": "school",
+  "private": true,
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.1",
+    "husky": "^9.1.7",
+    "ultracite": "6.0.3",
+    "vitepress": "2.0.0-alpha.12"
+  },
+  "packageManager": "pnpm@10.19.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
