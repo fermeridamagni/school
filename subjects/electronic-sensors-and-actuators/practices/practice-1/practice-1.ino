@@ -1,3 +1,10 @@
+/**
+ * @file practice-1.ino
+ * @author fermeridamagni
+ * @date 2025-10-22
+ * @description Ultrasonic sensor-based object counter with visual and audio feedback. Counts objects when they pass within 12cm of the sensor and provides LED/buzzer alerts.
+ */
+
 #include <Arduino.h>
 #include <MinimalUltrasonic.h>
 

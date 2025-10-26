@@ -1,3 +1,10 @@
+/**
+ * @file practice-1.1.ino
+ * @author fermeridamagni
+ * @date 2025-10-22
+ * @description Water level monitoring system using ultrasonic sensor. Displays tank levels with LEDs and activates buzzer when tank is near full.
+ */
+
 #include <MinimalUltrasonic.h>
 
 MinimalUltrasonic ultrasonic(10, 11);
