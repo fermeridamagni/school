@@ -1,6 +1,6 @@
-#include <Ultrasonic.h>
+#include <MinimalUltrasonic.h>
 
-Ultrasonic ultrasonic(10, 11);
+MinimalUltrasonic ultrasonic(10, 11);
 
 const int buzzerPin = 8;
 const int led1Pin = 5;
@@ -9,10 +9,11 @@ const int led3Pin = 7;
 
 int distance = 0;
 int waterLevel = 0;
-int tankHeight = 13;  // height (cm)
+int tankHeight = 13; // height (cm)
 int remainingLevel = 0;
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
 
   pinMode(led1Pin, OUTPUT);
@@ -21,28 +22,38 @@ void setup() {
   pinMode(buzzerPin, OUTPUT);
 }
 
-void loop() {
+void loop()
+{
   distance = ultrasonic.read();
 
   waterLevel = tankHeight - distance;
   remainingLevel = tankHeight - waterLevel;
 
-  if (waterLevel >= 1) {
+  if (waterLevel >= 1)
+  {
     digitalWrite(led1Pin, HIGH);
-  } else {
+  }
+  else
+  {
     digitalWrite(led1Pin, LOW);
   }
 
-  if (waterLevel >= (tankHeight / 2)) {
+  if (waterLevel >= (tankHeight / 2))
+  {
     digitalWrite(led2Pin, HIGH);
-  } else {
+  }
+  else
+  {
     digitalWrite(led2Pin, LOW);
   }
 
-  if (waterLevel >= 10) {
+  if (waterLevel >= 10)
+  {
     digitalWrite(led3Pin, HIGH);
     digitalWrite(buzzerPin, HIGH);
-  } else {
+  }
+  else
+  {
     digitalWrite(led3Pin, LOW);
     digitalWrite(buzzerPin, LOW);
   }
@@ -57,7 +68,6 @@ void loop() {
   Serial.print(tankHeight);
   Serial.println();
 
-  
   Serial.print("Remaining Height (cm): ");
   Serial.print(remainingLevel);
   Serial.println();
@@ -66,5 +76,5 @@ void loop() {
   Serial.print(waterLevel);
   Serial.println();
 
-  delay(100);  // A small delay to prevent rapid, unstable readings
+  delay(100); // A small delay to prevent rapid, unstable readings
 }
