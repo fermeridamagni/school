@@ -2,4 +2,7 @@
   "[c][cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
+  "[md]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  }
 }

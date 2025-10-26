@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "microchip.mplab-clangd",
-        "vscode-arduino.vscode-arduino-community"
+        "vscode-arduino.vscode-arduino-community",
+        "DavidAnson.vscode-markdownlint"
     ]
 }
