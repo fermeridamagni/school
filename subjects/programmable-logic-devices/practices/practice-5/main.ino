@@ -1,4 +1,11 @@
 /**
+ * @file main.ino
+ * @author fermeridamagni
+ * @date 2025-10-22
+ * @description Intelligent security system using ESP32. Monitors door sensor (reed switch) and sound sensor to trigger pre-alarm and full alarm states with LED sequences and buzzer/relay activation.
+ */
+
+/**
  * Sistema de Seguridad Inteligente - ESP32
  * Cuando el sensor de puerta (reed switch) se activa o el sensor de sonido detecta un ruido fuerte,
  * el sistema entra en un estado de prealarma durante 20 segundos, indicado por una secuencia de LEDs.

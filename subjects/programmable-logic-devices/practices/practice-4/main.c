@@ -1,10 +1,8 @@
 /**
  * @file main.c
- * @author ferme
+ * @author fermeridamagni
  * @date 2025-09-24
- * @brief Main function
- * @details Get the analogic value from the bit AN0 in the PIC16F887 and control
- * PORTB LEDs based on the value.
+ * @description Get the analogic value from the bit AN0 in the PIC16F887 and control PORTB LEDs based on the value.
  */
 
 #include <pic16f887.h> // Include the specific header for PIC16F887

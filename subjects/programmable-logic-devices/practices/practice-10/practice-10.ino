@@ -1,3 +1,10 @@
+/**
+ * @file practice-10.ino
+ * @author fermeridamagni
+ * @date 2025-10-22
+ * @description Button-controlled LED intermittence system. Two buttons control different LED blinking patterns (short 100ms and long 1000ms intervals).
+ */
+
 const int button1Pin = 5;
 const int button2Pin = 6;
 

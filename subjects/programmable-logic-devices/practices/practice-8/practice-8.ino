@@ -1,3 +1,10 @@
+/**
+ * @file practice-8.ino
+ * @author fermeridamagni
+ * @date 2025-10-22
+ * @description Analog sensor reader that activates an LED when the sensor reading falls below a threshold of 100.
+ */
+
 const int sensorPin = A0;
 const int ledPin = 7;
 
