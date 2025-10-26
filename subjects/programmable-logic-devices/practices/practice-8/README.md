@@ -69,6 +69,7 @@ if (reading < 100) {  // Change 100 to your desired threshold
 ## Suggested Sensors
 
 This code works with various analog sensors:
+
 - **Photoresistor**: Light-dependent resistor
 - **Potentiometer**: Manual variable resistor
 - **Temperature sensor**: Analog temperature readings

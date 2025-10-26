@@ -25,15 +25,18 @@ This practice implements a button-controlled LED system with different blinking 
 ## Functionality
 
 ### Button Controls
+
 - **Button 1**: Activates short LED intermittence (100ms on)
 - **Button 2**: Activates long LED intermittence (1000ms on)
 - Buttons are mutually exclusive (pressing one deactivates the other)
 
 ### LED Patterns
+
 - **LED 1 (Short)**: Blinks with 100ms ON period
 - **LED 2 (Long)**: Blinks with 1000ms ON period
 
 ### Operation Flow
+
 1. System reads both button states continuously
 2. When Button 1 is pressed:
    - Activates short intermittence on LED 1
